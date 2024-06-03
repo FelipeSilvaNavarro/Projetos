@@ -1,4 +1,8 @@
-const p = document.querySelector('p')
+/* eslint no-unused-vars: */
+/* eslint no-undef: "error" */
+/* eslint no-undef: "off" */
+/* eslint-disable space-before-function-paren */
+
 const btn = document.querySelector('.adicionar')
 const input = document.querySelector('.campo')
 const ul = document.querySelector('.tarefas')
@@ -32,7 +36,7 @@ function criaBotaoApagarTarefa(li) {
   return btn
 }
 
-/* TODO 
+/* TODO
   - Falta arrumar o botão
 */
 // @returns button
@@ -66,7 +70,7 @@ document.addEventListener('click', function (e) {
 function atualizaJSON() {
   const liTarefas = ul.querySelectorAll('li')
   const listaTarefas = []
-  for (let tarefa of liTarefas) {
+  for (const tarefa of liTarefas) {
     let tarefaTexto = tarefa.innerText
     tarefaTexto = tarefaTexto.replace('X', '')
     listaTarefas.push(tarefaTexto)
@@ -80,7 +84,7 @@ function adicionaTarefasSalva() {
   const tarefas = localStorage.getItem('tarefas')
   const listaTarefas = JSON.parse(tarefas)
 
-  for (let tarefa of listaTarefas) {
+  for (const tarefa of listaTarefas) {
     criaTarefa(tarefa)
   }
 }
