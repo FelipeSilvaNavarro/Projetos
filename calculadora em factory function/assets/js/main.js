@@ -1,25 +1,18 @@
-// Factory function ↓↓↓↓↓↓↓↓↓↓↓↓
+// FACTORY FUNCTION ↓↓↓↓↓↓↓↓↓↓↓↓
 function criaCalculadora() {
   /*
         TODO
-         - Não permitir que nada seja escrito no input por conta do eval
     */
   return {
     // Atributos dentro do objeto
-    // Algumas não estão sendo utilizadas mas para caso precise futuramente
     display: document.querySelector('.display'),
     btnClear: document.querySelector('.btn-clear'),
     btnDel: document.querySelector('btn-del'),
     btnEqual: document.querySelector('btn-eq'),
-    btnSoma: document.querySelector('btn-soma'),
-    btnSub: document.querySelector('btn-sub'),
-    btnMult: document.querySelector('btn-mult'),
-    btnDivi: document.querySelector('btn-divi'),
 
     // Metodos no final
     inicia() {
       this.cliqueBotoes()
-      this.clearDisplay()
       this.pressionaEnter()
     },
 
@@ -60,13 +53,14 @@ function criaCalculadora() {
       this.display.value = this.display.value.slice(0, -1) // O 0 é o tamanho da string e em seguida corta um número, neste caso o ultimo digitado
     },
     // FAZ A OPERAÇÃO DO RESULTADO
+    // FUNCTION PRINCIPAL ↓↓↓↓↓↓↓↓↓↓↓↓
     realizaConta() {
       /* A função eval é muito perigosa, pois ela pega oque tiver dentro e tenta executar no motor do javascript
         seja um simples alert ou até qualquer codigo */
       let conta = this.display.value
       try {
-        conta = eval(conta) // Vai pegar oque esta dentro do input e o motor do javascript vai executar por conta do eval e armazenar na propia variavel CONTA
-        // Se for algo diferente de uma conta, retornara alert
+        conta = eval(conta) // Vai pegar oque esta dentro do input e o motor do javascript vai executar como codigo javascript por conta do eval e armazenar na propia variavel CONTA
+        // Se for algo diferente de uma conta, retornará um alert
         if (!conta) {
           alert('Conta inválida')
           return
