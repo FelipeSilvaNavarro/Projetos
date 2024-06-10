@@ -38,7 +38,7 @@ function Calculadora() {
       // Caso de tudo certo, irá executar a conta
       // FUNCTION PRINCIPAL ↓↓↓↓↓↓↓↓↓↓↓↓
       else {
-        this.display.value = <conta></conta>
+        this.display.value = conta
       }
       return
     } catch (error) {
