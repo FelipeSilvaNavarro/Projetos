@@ -4,7 +4,9 @@ Bem-vindo ao repositório de projetos desenvolvidos durante aulas, cursos e idei
 
 ## Descrição do Projeto
 
-Este repositório contém diversos projetos criados para aplicar e consolidar conhecimentos adquiridos em programação. Cada projeto inclui uma breve descrição das funcionalidades e das técnicas empregadas.
+Este repositório contém diversos projetos criados para aplicar e consolidar conhecimentos adquiridos em programação.
+
+Cada projeto inclui uma breve descrição das funcionalidades e das técnicas empregadas.
 
 ## Projetos
 
