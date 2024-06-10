@@ -8,7 +8,7 @@ Este repositório contém diversos projetos criados para aplicar e consolidar co
 
 ## Projetos
 
-- **contadorIMC** - Desenvolvido utilizando `setInterval` e `setTimeout`, este projeto calcula o Índice de Massa Corporal (IMC) de um usuário.
+- **contadorIMC** - Projeto para calcular o Índice de Massa Corporal (IMC) de um usuário, desenvolvido utilizando JavaScript para a lógica de cálculo.
 - **lista de tarefas** - Aplicação que permite a criação, visualização e gerenciamento de tarefas. Baseado nos conhecimentos iniciais do curso, inclui melhorias e personalizações. Ainda há uma pendência na funcionalidade do botão "APAGAR TODOS". As atualizações e commits deste projeto estão no meu repositório privado, com futuras implementações sendo planejadas.
 - **site pessoal** - Um site pessoal em desenvolvimento que servirá como portfólio e blog.
 
