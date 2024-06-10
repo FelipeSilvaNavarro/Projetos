@@ -1,15 +1,18 @@
-/* eslint no-unused-vars: */
-/* eslint no-undef: "error" */
-/* eslint no-undef: "off" */
-/* eslint-disable space-before-function-paren */
+/* TODO 
+  - Falta arrumar o botão APAGAR TODAS AS TAREFAS
+  - Verificação de tarefas duplicadas
+*/
 
+// Variaveis 'globais'
+const p = document.querySelector('p')
 const btn = document.querySelector('.adicionar')
 const input = document.querySelector('.campo')
 const ul = document.querySelector('.tarefas')
 
+// Functions fabricas
 // @returns li
 function criaLi() {
-  const li = document.createElement('li')
+  let li = document.createElement('li')
   li.setAttribute('class', 'tarefa')
   return li
 }
@@ -21,14 +24,14 @@ function limpaCampo() {
 
 // @returns button
 function criaButton() {
-  const button = document.createElement('button')
+  let button = document.createElement('button')
   return button
 }
 
 // @returns button
 function criaBotaoApagarTarefa(li) {
-  const btn = criaButton()
-  const txtBtn = document.createTextNode('X')
+  let btn = criaButton()
+  let txtBtn = document.createTextNode('X')
   btn.appendChild(txtBtn)
   li.appendChild(btn) // Adiciona o BOTÃO NO FIM da tarefa
   btn.setAttribute('id', 'btnApagar')
@@ -36,14 +39,14 @@ function criaBotaoApagarTarefa(li) {
   return btn
 }
 
-/* TODO
+/* TODO 
   - Falta arrumar o botão
 */
 // @returns button
 function criaBotaoApagarTodasTarefas(p) {
   if (!document.querySelector('#btnApagarTudo')) {
-    const btnApagarTudo = criaButton()
-    const txtBtn = document.createTextNode('Apagar tudo')
+    let btnApagarTudo = criaButton()
+    let txtBtn = document.createTextNode('Apagar tudo')
     btnApagarTudo.appendChild(txtBtn)
     p.appendChild(btnApagarTudo)
     btnApagarTudo.setAttribute('id', 'btnApagarTudo')
@@ -54,7 +57,7 @@ function criaBotaoApagarTodasTarefas(p) {
   }
 }
 
-// Listeners dos botões | APAGA um LI e APAGA a UL
+// Listeners dos botões | APAGA um LI
 document.addEventListener('click', function (e) {
   const element = e.target
   if (element.id === 'btnApagar') {
@@ -63,19 +66,20 @@ document.addEventListener('click', function (e) {
   }
   if (element.id === 'btnApagarTudo') {
     ul.innerHTML = ''
+    atualizaJSON()
   }
 })
 
 // Mantem as tarefas
 function atualizaJSON() {
-  const liTarefas = ul.querySelectorAll('li')
-  const listaTarefas = []
-  for (const tarefa of liTarefas) {
+  let liTarefas = ul.querySelectorAll('li')
+  let arrayListaTarefas = []
+  for (let tarefa of liTarefas) {
     let tarefaTexto = tarefa.innerText
     tarefaTexto = tarefaTexto.replace('X', '')
-    listaTarefas.push(tarefaTexto)
+    arrayListaTarefas.push(tarefaTexto)
   }
-  const tarefasJSON = JSON.stringify(listaTarefas)
+  const tarefasJSON = JSON.stringify(arrayListaTarefas)
   localStorage.setItem('tarefas', tarefasJSON)
 }
 
@@ -84,7 +88,7 @@ function adicionaTarefasSalva() {
   const tarefas = localStorage.getItem('tarefas')
   const listaTarefas = JSON.parse(tarefas)
 
-  for (const tarefa of listaTarefas) {
+  for (let tarefa of listaTarefas) {
     criaTarefa(tarefa)
   }
 }
@@ -94,8 +98,8 @@ function criaTarefa(tarefa) {
   const li = criaLi()
   li.innerHTML = tarefa
   ul.appendChild(li) // Adiciona / cria a lista de tarefas
-  criaBotaoApagarTarefa(li) // Coloca o botão APAGAR FUNCIONAL no final da tarefa
-  // Colocar o botão APAGAR TODOS FUNCIONAL no final das tarefas
+  criaBotaoApagarTarefa(li) // Coloca o botão APAGAR no final da tarefa
+  // Coloca o botão APAGAR TODOS FUNCIONAL no final das tarefas
   limpaCampo()
   atualizaJSON()
 }
