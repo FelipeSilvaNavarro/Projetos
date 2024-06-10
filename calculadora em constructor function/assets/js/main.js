@@ -1,4 +1,8 @@
 function Calculadora() {
+  /*
+    TODO
+    - Ajustar o KeyCode
+  */
   this.display = document.querySelector('.display')
   this.inicia = () => {
     this.cliqueBotoes()
