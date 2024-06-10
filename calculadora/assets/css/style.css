@@ -25,3 +25,28 @@ body {
   padding: 20px;
   border-radius: 10px;
 }
+.calculadora {
+  width: 400px;
+}
+.display {
+  font-size: 2em;
+  width: 100%;
+  text-align: right;
+}
+.btnCss {
+  width: 100%;
+  height: 40px;
+  font-size: 1em;
+  border: none;
+  background-color: #dfdfdf;
+  cursor: pointer;
+}
+.btnCss:hover {
+  background-color: #cfcfcf;
+}
+.btn-eq {
+  background-color: rgb(88, 97, 122);
+  }
+  .btn-eq:hover {
+    background-color: rgb(79, 86, 107);
+}
