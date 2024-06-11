@@ -1,8 +1,6 @@
 // FACTORY FUNCTION ↓↓↓↓↓↓↓↓↓↓↓↓
 function criaCalculadora() {
-  /*
-        TODO
-    */
+// TODO: Ajeitar KeyCode
   return {
     // Atributos dentro do objeto
     display: document.querySelector('.display'),
