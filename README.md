@@ -31,4 +31,4 @@ Felipe Silva Navarro
 
 ## Screenshots e vídeos explicativos
 - **lista de tarefas** - https://www.youtube.com/watch?v=38R2UZx6tJI&t=10s
-Vídeos explicativos serão adicionados
+- Vídeos explicativos serão adicionados
