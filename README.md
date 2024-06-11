@@ -29,6 +29,6 @@ Felipe Silva Navarro
 
 - Curso de JavaScript na UDEMY
 
-## Screenshots e vídeos
-
-Vídeos explicativos serão adicionados em breve.
+## Screenshots e vídeos explicativos
+- **lista de tarefas** - https://www.youtube.com/watch?v=38R2UZx6tJI&t=10s
+Vídeos explicativos serão adicionados
