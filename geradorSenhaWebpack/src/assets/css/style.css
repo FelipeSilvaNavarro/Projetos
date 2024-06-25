@@ -17,47 +17,44 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.3em;
   line-height: 1.5em;
-  color: #fff;
 }
 
 .container {
   max-width: 640px;
   margin: 50px auto;
-  background: #2c3e50;
+  background: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.container input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 1em;
-}
-
-.container h1 {
+h1 {
   text-align: center;
-}
-
-.container h2 {
-  text-align: center;
-  font-size: 1.5em;
+  margin-bottom: 40px;
+  font-size: 2em;
   font-weight: bold;
-  color: #fff;
-  background-color: #3498db;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin: 0 auto 20px auto;
+  letter-spacing: 3px;
 }
 
-.msgErro {
-  font-size: 0.9em;
-  color: #e74c3c;
-  margin-top: 5px;
+.resultado {
+  font-size: 1.5em;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin: 40px 0;
+  text-align: center;
 }
 
-.button {
+input[type='checkbox'],
+input[type='text'] {
+  width: 15px;
+  height: 15px;
+  margin: 0px 10px 0px 10px
+}
+
+span {
+  color: #333;
+}
+
+button {
   width: 100%;
   background-color: #4caf50;
   border-radius: 15px;
@@ -68,10 +65,10 @@ body {
   color: #fff;
   cursor: pointer;
   padding: 10px 0;
-  margin: 20px 0px;
+  margin-top: 20px;
 }
 
-.button:hover {
+button:hover {
   background-color: #45a049;
   border-color: #45a049;
 }
