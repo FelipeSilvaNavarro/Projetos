@@ -1,5 +1,5 @@
 /* TODO 
-  - Verificação de tarefas duplicadas
+  - Ajustar problema na verificação de duplicidades | Esta retornando false após a segunda verificação
 */
 
 // Variáveis de seleção que poderão ser usadas globalmente

@@ -1,53 +1,98 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Felipe Navarro - Desenvolvedor de Software</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Felipe Dev</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon" href="./assets/img/favicon.svg" type="image/x-icon">
 </head>
 
 <body>
     <header>
+        <h1>Felipe Silva Navarro</h1>
         <nav>
             <ul>
-                <li><a href="#sobre">Sobre Mim</a></li>
-                <li><a href="#portfolio">Portfólio</a></li>
-                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#sobre">Sobre mim</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
     </header>
-
-    <section id="inicio">
-        <h1>Bem-vindo ao meu site pessoal</h1>
-        <p>Sou um profissional de TI apaixonado por programação e em busca de novas oportunidades na área.</p>
-        <a href="#contato" class="btn">Entre em contato</a>
-    </section>
-
-    <section id="sobre">
-        <h2>Sobre Mim</h2>
-        <!-- Aqui você pode adicionar informações sobre você -->
-    </section>
-
-    <section id="portfolio">
-        <h2>Portfólio</h2>
-        <!-- Aqui você pode adicionar links para seus projetos no GitHub -->
-    </section>
-
-    <section id="servicos">
-        <h2>Serviços</h2>
-        <!-- Aqui você pode adicionar informações sobre os serviços que oferece -->
-    </section>
-
-    <section id="contato">
-        <h2>Contato</h2>
-        <!-- Aqui você pode adicionar um formulário de contato -->
-    </section>
-
+    <main>
+        <section id="sobre" class="sobre">
+            <h2>Sobre mim</h2>
+            <div class="sobre-content">
+                <img src="./assets/img/Eu.jpeg" alt="Foto de Felipe" class="sobre-img">
+                <div class="sobre-texto">
+                    <p>Sou um profissional de Tecnologia da Informação com formação em Análise e Desenvolvimento de Sistemas pela UNOPAR, e experiência desde 2022. Sempre fui um amante da tecnologia e novos conhecimentos desta área.</p>
+                    <p>Atualmente estou atuando como Assistente de TI no Assaí Atacadista, onde sou responsável por manutenção de infraestrutura, suporte a usuários e implementação de equipamentos, porém desejo migrar e especializar a minha carreira em programação.</p>
+                </div>
+            </div>
+        </section>
+        <section id="habilidades">
+            <h2>Minhas habilidades</h2>
+            <div class="habilidades-grid">
+                <div class="habilidade-item">
+                    <img src="./assets/img/JavaScript-logo.png" alt="Ícone do JavaScript">
+                    <p>No momento estou aprendendo JS pela Udemy, confesso que estou gostando muito de toda a arquitetura da linguagem, possuo alguns projetos em JS onde voê pode conferir na seção abaixo!</p>
+                </div>
+                <div class="habilidade-item">
+                    <img src="./assets/img/java.png" alt="Ícone do Java">
+                    <p>Em 2021 eu fiz um curso de Java que foi por onde começei a estudar programação sem ser aulas gratuitas, gosto da linguagem e vez ou outra uso, também possuo alguns projetos em Java na seção abaixo!</p>
+                </div>
+                <div class="habilidade-item">
+                    <img src="./assets/img/mySql.png" alt="Ícone do MySQL">
+                    <p>No curso que fiz de Java também estava incluso MySQL, não especializado porém todas as operações de um BD foram-me ensinadasa, porém não possuo projetos exlusivos em MySQL.</p>
+                </div>
+            </div>
+        </section>
+        <section id="projetos" class="projetos">
+            <h2>Meus projetos</h2>
+            <p>Bem-vindo ao meu portfólio. Aqui você encontrará uma seleção dos meus melhores projetos e trabalhos.
+                <br>
+                <br>
+                Explore meus projetos para saber mais sobre o que faço.
+            </p>
+            <div class="projetos-grid">
+                <!-- Adicione suas próprias imagens -->
+                <div class="projeto-item">Projeto 1</div>
+                <div class="projeto-item">Projeto 2</div>
+            </div>
+        </section>
+    </main>
     <footer>
-        <p>&copy; 2024 Felipe Navarro - Todos os direitos reservados</p>
+        <section id="contato">
+            <h2>Contato</h2>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <a href="https://api.whatsapp.com/send/?phone=5582988130715&text=Ol%C3%A1%21+Vim+pelo+seu+site%21&type=phone_number&app_absent=0">
+                        <img src="./assets/img/Whatsapp.png" alt="Ícone do WhatsApp" class="icon">
+                        <p class="contact-text">Fale comigo pelo Whatsapp!</p>
+                    </a>
+                    <a href="mailto:felipenavarro07@hotmail.com">
+                        <img src="./assets/img/Outlook.png" alt="Ícone de Email" class="icon">
+                        <p class="contact-text">Fale comigo pelo Email!</p>
+                    </a>
+                </div>
+
+                <div class="footer-column">
+                    <p>Resido atualmente em:</p><br>
+                    <p>Brazil, Alagoas, Maceió, Cidade Universitária</p>
+                </div>
+                <div class="footer-column">
+                    <p>Links úteis:</p>
+                    <ul>
+                        <li><img src="./assets/img/Github.png" alt="Ícone do GitHub"><a href="https://github.com/FelipeSilvaNavarro">Github</a></li>
+                        <li><img src="./assets/img/Linkedin.png" alt="Ícone do LinkedIn"><a href="https://www.linkedin.com/in/felipe-navarro-9b033a199/">LinkedIn</a></li>
+                        <li><img src="./assets/img/Instagram.png" alt="Ícone do Instagram"><a href="https://www.instagram.com/felipes_nv/">Instagram</a></li>
+                        <li><img src="./assets/img/Youtube.png" alt="Ícone do YouTube"><a href="https://www.youtube.com/channel/UCL0sca8UmSPrCW5Ob1cLUaA">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </footer>
 </body>
 
