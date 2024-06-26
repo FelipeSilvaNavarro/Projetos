@@ -10,10 +10,14 @@ Cada projeto inclui uma breve descrição das funcionalidades e das técnicas em
 
 ## Projetos
 
-- **contadorIMC** - Projeto para calcular o Índice de Massa Corporal (IMC) de um usuário, desenvolvido utilizando JavaScript para a lógica de cálculo.
-- **lista de tarefas** - Aplicação que permite a criação, visualização e gerenciamento de tarefas. Baseado nos conhecimentos iniciais do curso, inclui melhorias e personalizações. As atualizações e commits deste projeto irá vim com futuras implementações sendo planejadas.
-- **site pessoal** - Um site pessoal em desenvolvimento que servirá como portfólio e blog.
-- **calculadora** - Projeto de uma calculadora desenvolvida em JavaScript, HTML e CSS. A calculadora permite realizar operações aritméticas como adição, subtração, multiplicação e divisão, com uma interface intuitiva e responsiva, a calculadora foi feita usando uma constructor function e outra usando factory function, onde na constructor function o código é bem mais simples e pequeno
+- **contadorIMC** - Projeto para calcular o Índice de Massa Corporal (IMC) de um usuário, Desenvolvido utilizando HTML/CSS e JS para toda a lógica do calculo.
+- **lista de tarefas** - Projeto que permite a criação, visualização e gerenciamento de tarefas. foi feito baseado nos conhecimentos iniciais do curso porém com melhorias e personalizações. Futuras implementações e atualizações deste projeto em breve | Desenvolvido utilizando HTML/CSS/JS
+- **site pessoal** - Site pessoal que serve como portfólio e curriculo de apresentação | Desenvolvido utilizando HTML/CSS e AOS para efeitos.
+- **calculadora** - Projeto de uma calculadora desenvolvida em JavaScript, HTML e CSS. A calculadora permite realizar operações aritméticas como adição, subtração, multiplicação e divisão, com uma interface intuitiva e responsiva, a calculadora foi feita usando uma constructor function e outra usando factory function, onde na constructor function o código é bem mais simples e pequeno | Desenvolvido utilizando HTML/CSS e JS para toda a lógica
+- **geradorCPF** - Projeto que permite gerar números de CPF válidos de forma aleatória | Desenvolvido utilizando HTML/CSS/Webpack e a classe ValidaCPF em JS para toda a lógica.
+- **geradorSenha** - Projeto que permite gerar senhas seguras de forma aleatória | Desenvolvido utilizando HTML/CSS/Webpack e JS para toda a lógica.
+- **formulario** - Projeto de um exemplo de formulário básico, onde as informações passam por validação seguindo as regras do projeto | Desenvolvida utilizando HTML/CSS e JS para toda a validação, também neste projeto foi utilizado a classe ValidaCPF para a lógica de validação do CPF inserido.
+- **validadorDeCpf** - Projeto que permite validar se um número de CPF inserido é válido | Desenvolvido utilizando HTML/CSS/ e JS para toda a lógica.
 
 ## Tecnologias Utilizadas
 
@@ -31,4 +35,4 @@ Felipe Silva Navarro
 
 ## Screenshots e vídeos explicativos
 - **lista de tarefas** - https://www.youtube.com/watch?v=38R2UZx6tJI&t=10s
-- Vídeos explicativos serão adicionados
+- Vídeos explicativos a mais serão adicionados conformes
