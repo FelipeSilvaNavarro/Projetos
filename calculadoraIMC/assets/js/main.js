@@ -3,13 +3,16 @@ function corpo() {
   const resultado = document.querySelector('.resultado')
   const arrayResultado = []
 
+  /**
+   * Recebe o submit do form, trata os dados e devolve
+   * 
+   */
   function recebeEventoForm(evento) {
-    evento.preventDefault()
+    evento.preventDefault() // Prevenindo de a pagina atualizar
 
+    /* Pega os dados inseridos e coloca um ponto no lugar da ,*/
     const peso = parseFloat(form.querySelector('#peso').value.replace(',', '.'))
-    const altura = parseFloat(
-      form.querySelector('#altura').value.replace(',', '.')
-    )
+    const altura = parseFloat(form.querySelector('#altura').value.replace(',', '.'))
 
     const pessoa = {
       peso,
@@ -20,11 +23,12 @@ function corpo() {
 
     resultado.innerHTML = ''
 
+    // Verificação dos dados, se são válidos
     if (!isNaN(pessoa.peso) && !isNaN(pessoa.altura)) {
+      // Formula do IMC
       const imc = pessoa.peso / (pessoa.altura * pessoa.altura)
-
       let classificacao = ''
-
+      // Verificação do RANGE do IMC
       if (imc < 18.5) {
         classificacao = 'Abaixo do peso'
       } else if (imc >= 18.5 && imc < 25) {
@@ -39,9 +43,7 @@ function corpo() {
         classificacao = 'Obesidade grau 3'
       }
 
-      resultado.innerHTML = `<p>O seu IMC é: ${imc.toFixed(
-        2
-      )} - ${classificacao}</p>`
+      resultado.innerHTML = `<p>O seu IMC é: ${imc.toFixed(2)} - ${classificacao}</p>`
     } else {
       resultado.innerHTML = '<p>Por favor, insira valores válidos.</p>'
     }
