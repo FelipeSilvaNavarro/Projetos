@@ -35,4 +35,5 @@ Felipe Silva Navarro
 
 ## Screenshots e vídeos explicativos
 - **lista de tarefas** - https://www.youtube.com/watch?v=38R2UZx6tJI&t=10s
+- **CalculadoraIMC** - https://www.youtube.com/watch?v=ChDeB6xpNF0
 - Vídeos explicativos a mais serão adicionados conformes
