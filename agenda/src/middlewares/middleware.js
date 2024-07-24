@@ -7,9 +7,10 @@ exports.middlewareSec = (req, res, next) => {
 }
 // Previnindo o erro de vazar pra tela do user
 exports.checkCsrfError = (err, req, res, next) => {
-    if (err && err.code === 'EBADCSRFTOKEN') {
+    if (err) { // Caso aconteca literalmente qualquer erro, ele nn vai pra frente
         return res.render('404')
     }
+    next()
 }
 // Enviar para todas as paginas um CsrfToken
 exports.CsrfMiddleware = (req, res, next) => {
