@@ -1,5 +1,6 @@
 exports.middlewareGlobal = (req, res, next) => {
-    res.locals.varRes = 'Value de todos os RES' // Esta disponivel em todas as paginas pois jogou em um middleware sem rotas (server.js ln 33)
+    res.locals.errors = req.flash('errors') // Capturando os erros e injetando dentro da pagina
+    res.locals.success = req.flash('success') 
     next()
 }
 exports.middlewareSec = (req, res, next) => {
