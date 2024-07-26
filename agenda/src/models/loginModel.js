@@ -21,16 +21,25 @@ class Login {
         if (this.errors.length > 0) return
         const salt = bcryptjs.genSaltSync()
         this.body.password = bcryptjs.hashSync(this.body.password, salt) // Fznd um hash da senha no bd, baseado no valor da senha e do salt
-        try {
-
-            this.user = await LoginModel.create(this.body) // Pode lançar desse jeito pois pode confiar que os dados já vai estar limpos
-        } catch (e) {
-            console.error(e)
+        this.user = await LoginModel.create(this.body) // Pode lançar desse jeito pois pode confiar que os dados já vai estar limpos
+    }
+    async login() {
+        this.valida()
+        if(this.errors.length > 0) return
+        this.user = await LoginModel.findOne({ email: this.body.email }) // Checa se o usuario existe no bd
+        if(!this.user) {
+            this.errors.push('Usuario não existe') // Se o user nn existe, retrona um erro
+            return
         }
+        if(!bcryptjs.compareSync(this.body.password, this.user.password)){ // Se o user existir, compara as senhas
+            this.errors.push('Senha inválida')
+            this.user = null
+            return
+        } 
     }
     async userExists () {
-        const user = await LoginModel.findOne({ email: this.body.email }) // Verifica se o email q ta no bd é igual ao email no body
-        if (user) this.errors.push('Usuario existente') // Se ja tem um usuario lança um erro
+        this.user = await LoginModel.findOne({ email: this.body.email }) // Verifica se o email q ta no bd é igual ao email no body
+        if (this.user) this.errors.push('Usuario existente') // Se ja tem um usuario lança um erro
     }
     valida () {
         this.cleanUp()

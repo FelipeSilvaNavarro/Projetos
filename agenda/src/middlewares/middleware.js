@@ -1,6 +1,7 @@
 exports.middlewareGlobal = (req, res, next) => {
     res.locals.errors = req.flash('errors') // Capturando os erros e injetando dentro da pagina
     res.locals.success = req.flash('success') 
+    res.locals.user = req.session.user
     next()
 }
 exports.middlewareSec = (req, res, next) => {
