@@ -32,6 +32,7 @@ app.use(express.json())
 // Todos os arquivos estaticos que podem ser acessados diretamente, tais como, img, css, js
 app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(helmet())
+app.use(helmet.referrerPolicy({policy: ["origin", "unsafe-url"]}));
 
 
 const sessionOptions = session({

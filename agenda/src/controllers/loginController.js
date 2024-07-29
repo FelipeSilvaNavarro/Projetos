@@ -31,9 +31,8 @@ exports.login = async function (req, res) {
         await login.login()
         if (login.errors.length > 0) {
             req.flash('errors', login.errors)
-            // Salvando pra retornar pra pag de login
             req.session.save(function () {
-                return res.redirect('/login/index') // Volta pra pagina do login assim que ve um erro
+                return res.redirect('/login/index')
             })
             return
         }
