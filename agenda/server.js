@@ -6,8 +6,6 @@ const express = require('express')
 const app = express()
 // Trabalhar com caminhos
 const path = require('path')
-// Dxa a aplicação mais segura
-const helmet = require('helmet')
 // Token dos form
 const csurf = require('csurf')
 // Modelar a bd e garantir que os dados que serão salvo na bd serão realmente da forma que quero salvar
@@ -38,24 +36,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 // Todos os arquivos estaticos que podem ser acessados diretamente, tais como, img, css, js
 app.use(express.static(path.resolve(__dirname, 'public')))
-app.use(helmet())
-// Liberando o back para ser referer
-app.use(helmet.referrerPolicy({ policy: [ 'origin', 'unsafe-url' ] }))
-// Tirando o erro de CSP
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: [ "'self'" ],
-      scriptSrc: [ "'self'", 'https://code.jquery.com', 'https://cdnjs.cloudflare.com', 'https://stackpath.bootstrapcdn.com' ],
-      styleSrc: [ "'self'", "'unsafe-inline'", 'https://stackpath.bootstrapcdn.com' ],
-      imgSrc: [ "'self'", 'data:' ],
-      connectSrc: [ "'self'" ],
-      fontSrc: [ "'self'", 'https://fonts.gstatic.com' ],
-      objectSrc: [ "'none'" ],
-      upgradeInsecureRequests: []
-    }
-  })
-)
 const sessionOptions = session({
   secret: 'texto q ninguem vai saber',
   resave: false,
