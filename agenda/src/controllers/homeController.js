@@ -1,5 +1,5 @@
-// Tudo que é a raiz da rota, será INDEX, no caso tudo que é paginaInicial
-exports.index = (req, res) => {
-    res.render('index')
-    return
-}
+const Contato = require('../models/contatoModel');
+exports.index = async function (req, res) {
+  const contatos = await Contato.buscaContatos();
+  res.render('index', { contatos }); // Envia um objeto contendo os contatos
+};

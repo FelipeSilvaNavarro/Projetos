@@ -12,15 +12,26 @@
                     <%- include('includes/messages')%>
                         <div class="responsive-table">
                             <table class="table my-3">
-                                <tr>
-                                    <td>Felipe Silva</td>
-                                    <td>Navarro</td>
-                                    <td>82988130715</td>
-                                    <td>felipeleninja12@gmail.com</td>
-                                </tr>
-                            </table>
+                            <!-- So exibe os contatos se tiver contatos -->
+                            <% if (contatos.length > 0) { %>
+                                
+                                <!-- Laço para exibir em uma table cada contato que foi criado -->
+                                <% contatos.forEach(contato=> { %>
+                                    <tr>
+                                        <!-- TODO: Colocar colunas encima como legendas -->
+                                        <td><%= contato.nome %></td>
+                                        <td><%= contato.sobrenome %></td>
+                                        <td><%= contato.telefone %></td>
+                                        <td><%= contato.email %></td>
+                                        <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+                                        <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
+                                    </tr>
+                                <% }) %>
+                            <% } else { %>
+                                <p class="text-center lead">Não existem contatos</p>
+                            <% } %>
+                                </table>
                         </div>
-
                 </div>
 
                 <div class="col-lg-2"></div>

@@ -12,9 +12,11 @@ const helmet = require('helmet')
 const csurf = require('csurf')
 // Modelar a bd e garantir que os dados que serão salvo na bd serão realmente da forma que quero salvar
 const mongoose = require('mongoose')
-mongoose.connect(process.env.CONNECTIONSTRING).then(() => {
-  app.emit('Pronto')
-}).catch(e => console.error(e))
+mongoose.connect(process.env.CONNECTIONSTRING)
+  .then(() => {
+    app.emit('Pronto')
+  })
+  .catch((e) => console.error(e))
 // Guardar a sessão nos cookies do navegador do user
 const session = require('express-session')
 // Informa que as sessões serão salva dentro do bd pra nn salvar na memoria
@@ -24,7 +26,12 @@ const flash = require('connect-flash')
 // Rotas da aplicação
 const routes = require('./routes')
 // Middlewares, funções que são executadas na rota
-const { middlewareGlobal, middlewareSec, checkCsrfError, CsrfMiddleware } = require('./src/middlewares/middleware')
+const {
+  middlewareGlobal,
+  middlewareSec,
+  checkCsrfError,
+  CsrfMiddleware,
+} = require('./src/middlewares/middleware')
 // Pode postar formularios pra dentro da aplicação
 app.use(express.urlencoded({ extended: true }))
 // Pode fazer o PARSE de JSON pra dentro da aplicação
@@ -32,18 +39,32 @@ app.use(express.json())
 // Todos os arquivos estaticos que podem ser acessados diretamente, tais como, img, css, js
 app.use(express.static(path.resolve(__dirname, 'public')))
 app.use(helmet())
-app.use(helmet.referrerPolicy({policy: ["origin", "unsafe-url"]}));
-
-
+// Liberando o back para ser referer
+app.use(helmet.referrerPolicy({ policy: [ 'origin', 'unsafe-url' ] }))
+// Tirando o erro de CSP
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: [ "'self'" ],
+      scriptSrc: [ "'self'", 'https://code.jquery.com', 'https://cdnjs.cloudflare.com', 'https://stackpath.bootstrapcdn.com' ],
+      styleSrc: [ "'self'", "'unsafe-inline'", 'https://stackpath.bootstrapcdn.com' ],
+      imgSrc: [ "'self'", 'data:' ],
+      connectSrc: [ "'self'" ],
+      fontSrc: [ "'self'", 'https://fonts.gstatic.com' ],
+      objectSrc: [ "'none'" ],
+      upgradeInsecureRequests: []
+    }
+  })
+)
 const sessionOptions = session({
   secret: 'texto q ninguem vai saber',
   resave: false,
   saveUninitialized: false,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 7, // Cookie de 7 dias
-    httpOnly: true
+    httpOnly: true,
   },
-  store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING })
+  store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
 })
 
 app.use(sessionOptions)

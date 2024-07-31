@@ -1,12 +1,13 @@
 {
-  "name": "aula137-express",
+  "name": "agenda",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js --ignore public --ignore frontend",
-    "dev": "webpack -w"
+    "dev": "webpack -w",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -36,6 +37,7 @@
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.2.2",
     "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
     "webpack": "^5.31.2",
     "webpack-cli": "^4.6.0"
   }
