@@ -40,7 +40,6 @@ const routes = require('./routes')
 // Middlewares personalizados, importados de outro arquivo
 const {
   middlewareGlobal,
-  middlewareSec,
   checkCsrfError,
   CsrfMiddleware,
 } = require('./src/middlewares/middleware')
@@ -73,7 +72,6 @@ app.set('view engine', 'ejs')
 app.use(csurf())  // Ativa a proteção contra CSRF
 // Registro dos middlewares globais e de segurança
 app.use(middlewareGlobal)
-app.use(middlewareSec)
 app.use(checkCsrfError)
 app.use(CsrfMiddleware)
 // Usa as rotas definidas em outro arquivo

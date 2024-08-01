@@ -6,21 +6,19 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-
       <li class="nav-item">
         <a class="nav-link" href="/contato/index">Cadastrar contato</a>
       </li>
-        <!-- Se o user tiver logado ve o botão de sair, se nn ver o botão de entrar -->
-        <% if(user) { %>
+      <!-- Se o user estiver logado, exibe o botão de sair; se não, exibe o botão de entrar -->
+      <% if (user) { %>
         <li class="nav-item">
           <a class="nav-link" href="/login/logout">Sair</a>
         </li>
-        <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/login/index">Entrar</a>
-          </li>
-
-          <% }%>
+      <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/login/index">Entrar</a>
+        </li>
+      <% } %>
     </ul>
   </div>
 </nav>

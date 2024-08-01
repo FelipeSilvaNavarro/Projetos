@@ -1,8 +1,19 @@
-const mongoose = require('mongoose');
-const HomeSchema = new mongoose.Schema({
-  titulo: { type: String, required: true }, // O titulo se torna requerido para ser enviado ao colocar o required
-  descricao: { type: String },
-});
-const HomeModel = mongoose.model('Home', HomeSchema);
+/**
+ * Define o modelo de Home e as operações relacionadas, utilizando Mongoose para interagir com o banco de dados MongoDB.
+ * O modelo inclui campos para título e descrição do home.
+ * Campos do modelo incluem título e descrição.
+ */
 
-module.exports = HomeModel;
+// Imports
+const mongoose = require('mongoose')
+
+// Definição do esquema do modelo Home no Mongoose
+const HomeSchema = new mongoose.Schema({
+  titulo: { type: String, required: true }, // O título é um campo obrigatório
+  descricao: { type: String }, // Descrição é um campo opcional
+})
+
+// Criação do modelo Home no Mongoose
+const HomeModel = mongoose.model('Home', HomeSchema)
+
+module.exports = HomeModel

@@ -1,15 +1,22 @@
+<!-- Inclui o cabeçalho do site -->
 <%- include('includes/head') %>
-    <%- include('includes/nav') %>
 
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 my-3">
-                    <!-- TODO: Colocar pra aparecer o nome, juntamente com um novo campo "Usuario" tipo nome de user -->
-                    <h1 class="text-center">Olá <%= user.email %></h1>
-                    <p class="text-center lead">Voce precisa sair para criar outra conta</p>
-                    <%- include('includes/messages')%>
-                </div>
-            </div>
+<!-- Inclui a barra de navegação do site -->
+<%- include('includes/nav') %>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 my-3">
+            <!-- Título que exibe o e-mail do usuário -->
+            <!-- TODO: Colocar pra aparecer o nome, juntamente com um novo campo "Usuario" tipo nome de user -->
+            <h1 class="text-center">Olá <%= user.email %></h1>
+            <!-- Mensagem informando sobre a necessidade de sair para criar outra conta -->
+            <p class="text-center lead">Você precisa sair para criar outra conta</p>
+            <!-- Inclui mensagens flash para o usuário -->
+            <%- include('includes/messages') %>
         </div>
+    </div>
+</div>
 
-        <%- include('includes/footer') %>
+<!-- Inclui o rodapé do site -->
+<%- include('includes/footer') %>

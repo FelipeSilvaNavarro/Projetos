@@ -1,41 +1,40 @@
-<%- include('includes/head') %>
-    <%- include('includes/nav') %>
+<%- include('includes/head') %> <!-- Inclui o cabeçalho do site -->
+<%- include('includes/nav') %> <!-- Inclui a barra de navegação do site -->
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
 
-                <div class="col-lg-8 my-3">
-                    <h1 class="text-center">Agenda</h1>
-                    <p class="text-center lead">Seus contatos estão abaixo</p>
+        <div class="col-lg-8 my-3">
+            <h1 class="text-center">Agenda</h1>
+            <p class="text-center lead">Seus contatos estão abaixo</p>
 
-                    <%- include('includes/messages')%>
-                        <div class="responsive-table">
-                            <table class="table my-3">
-                            <!-- So exibe os contatos se tiver contatos -->
-                            <% if (contatos.length > 0) { %>
-                                
-                                <!-- Laço para exibir em uma table cada contato que foi criado -->
-                                <% contatos.forEach(contato=> { %>
-                                    <tr>
-                                        <!-- TODO: Colocar colunas encima como legendas -->
-                                        <td><%= contato.nome %></td>
-                                        <td><%= contato.sobrenome %></td>
-                                        <td><%= contato.telefone %></td>
-                                        <td><%= contato.email %></td>
-                                        <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
-                                        <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td>
-                                    </tr>
-                                <% }) %>
-                            <% } else { %>
-                                <p class="text-center lead">Não existem contatos</p>
-                            <% } %>
-                                </table>
-                        </div>
-                </div>
-
-                <div class="col-lg-2"></div>
+            <%- include('includes/messages') %> <!-- Inclui mensagens flash, se houver -->
+            <div class="responsive-table">
+                <table class="table my-3">
+                    <!-- Só exibe os contatos se houver algum -->
+                    <% if (contatos.length > 0) { %>
+                        <!-- Laço para exibir cada contato na tabela -->
+                        <% contatos.forEach(contato => { %>
+                            <tr>
+                                <!-- TODO: Colocar colunas em cima como legendas -->
+                                <td><%= contato.nome %></td> <!-- Nome do contato -->
+                                <td><%= contato.sobrenome %></td> <!-- Sobrenome do contato -->
+                                <td><%= contato.telefone %></td> <!-- Telefone do contato -->
+                                <td><%= contato.email %></td> <!-- Email do contato -->
+                                <td><a href="/contato/index/<%= contato._id %>">Editar</a></td> <!-- Link para editar o contato -->
+                                <td><a class="text-danger" href="/contato/delete/<%= contato._id %>">Excluir</a></td> <!-- Link para excluir o contato -->
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <p class="text-center lead">Não existem contatos</p> <!-- Mensagem exibida quando não há contatos -->
+                    <% } %>
+                </table>
             </div>
         </div>
 
-        <%- include('includes/footer') %>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+
+<%- include('includes/footer') %> <!-- Inclui o rodapé do site -->

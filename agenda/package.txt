@@ -1,0 +1,60 @@
+/**
+ * O arquivo package.json é usado para definir as dependências e configurações do projeto.
+ * Ele inclui informações sobre o projeto, scripts de execução, dependências e devDependencies.
+ * 
+ * - "name": Nome do projeto.
+ * - "version": Versão do projeto.
+ * - "description": Descrição do projeto.
+ * - "main": Arquivo principal do projeto.
+ * - "scripts": Comandos definidos para facilitar tarefas comuns, como iniciar o servidor, executar o webpack em modo de desenvolvimento, e formatar o código com Prettier.
+ * - "keywords": Palavras-chave associadas ao projeto.
+ * - "author": Autor do projeto.
+ * - "license": Licença do projeto.
+ * - "dependencies": Pacotes necessários para a execução do projeto em produção.
+ * - "devDependencies": Pacotes necessários apenas para desenvolvimento e testes.
+ */
+{
+  "name": "agenda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", // Script para exibir uma mensagem de erro se não houver teste especificado
+    "start": "nodemon server.js --ignore public --ignore frontend", // Inicia o servidor usando nodemon, ignorando os diretórios public e frontend
+    "dev": "webpack -w", // Executa o webpack em modo de observação para desenvolvimento
+    "format": "prettier --write ." // Formata todos os arquivos do projeto usando Prettier
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "core-js": "^3.37.1",
+    "css-loader": "^7.1.2",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "glob": "^11.0.0",
+    "helmet": "^7.1.0",
+    "lru-cache": "^11.0.0",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.0",
+    "regenerator-runtime": "^0.14.1",
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.2.2",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.31.2",
+    "webpack-cli": "^4.6.0"
+  }
+}

@@ -1,25 +1,25 @@
-<% if(errors.length> 0) { %>
-
+<% if (errors.length > 0) { %>
     <div class="row">
         <div class="col my-3">
             <div class="alert alert-danger">
-                <!-- Laço para exibir na tela um flash message de cada erro de dentro do arary que foi lançado nas regras do negocio -->
-                <% errors.forEach(erro=> { %>
-                    <%= erro %><br>
-                        <% }) %>
+                <!-- Laço para exibir cada mensagem de erro do array de erros -->
+                <% errors.forEach(erro => { %>
+                    <%= erro %><br> <!-- Exibe cada mensagem de erro seguida de uma quebra de linha -->
+                <% }) %>
             </div>
         </div>
     </div>
-    <% } %>
-        <% if(success.length> 0) { %>
+<% } %>
 
-            <div class="row">
-                <div class="col my-3">
-                    <div class="alert alert-success">
-                        <% success.forEach(success=> { %>
-                            <%= success %><br>
-                                <% }) %>
-                    </div>
-                </div>
+<% if (success.length > 0) { %>
+    <div class="row">
+        <div class="col my-3">
+            <div class="alert alert-success">
+                <!-- Laço para exibir cada mensagem de sucesso do array de sucessos -->
+                <% success.forEach(success => { %>
+                    <%= success %><br> <!-- Exibe cada mensagem de sucesso seguida de uma quebra de linha -->
+                <% }) %>
             </div>
-            <% } %>
+        </div>
+    </div>
+<% } %>
