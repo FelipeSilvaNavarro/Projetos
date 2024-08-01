@@ -1,68 +1,84 @@
-// Variaveis de ambiente
+/**
+ * Configuração e inicialização de um servidor Express com integração MongoDB,
+ * middleware para sessões, proteção CSRF, entre outras funcionalidades.
+ * O código conecta o banco de dados, configura middleware para manipulação de dados, 
+ * segurança e define as rotas da aplicação.
+ * 
+ * @param {*} req - Objeto de solicitação HTTP
+ * @param {*} res - Objeto de resposta HTTP
+ * @returns Inicia o servidor na porta 3000
+ */
+
+// Carrega as variáveis de ambiente do arquivo .env
 require('dotenv').config()
 
-// Iniciação do app express
+// Iniciação do app Express
 const express = require('express')
 const app = express()
-// Trabalhar com caminhos
+// Trabalhar com caminhos de arquivos e diretórios
 const path = require('path')
-// Token dos form
+// Token de proteção CSRF dos FORM da aplicação
 const csurf = require('csurf')
-// Modelar a bd e garantir que os dados que serão salvo na bd serão realmente da forma que quero salvar
+/*
+* Modelagem e conexão com o banco de dados MongoDB
+* Conexão com o banco de dados MongoDB usando Mongoose.
+*/
 const mongoose = require('mongoose')
 mongoose.connect(process.env.CONNECTIONSTRING)
   .then(() => {
-    app.emit('Pronto')
+    app.emit('Pronto')  // Emite um sinal quando a conexão com o banco de dados estiver pronta
   })
   .catch((e) => console.error(e))
 // Guardar a sessão nos cookies do navegador do user
 const session = require('express-session')
-// Informa que as sessões serão salva dentro do bd pra nn salvar na memoria
+// Armazenamento de sessão no MongoDB
 const MongoStore = require('connect-mongo')
-// Mensagens auto-destrutivas, assim que é lida(executada) não vai mais existir, sem sessão essas msg nn irão funcionar
+// Mensagens auto-destrutivas
 const flash = require('connect-flash')
-// Rotas da aplicação
+// Rotas da aplicação, importadas de outro arquivo
 const routes = require('./routes')
-// Middlewares, funções que são executadas na rota
+// Middlewares personalizados, importados de outro arquivo
 const {
   middlewareGlobal,
   middlewareSec,
   checkCsrfError,
   CsrfMiddleware,
 } = require('./src/middlewares/middleware')
-// Pode postar formularios pra dentro da aplicação
+// Permite o envio de dados através de formulários
 app.use(express.urlencoded({ extended: true }))
-// Pode fazer o PARSE de JSON pra dentro da aplicação
+// Permite a manipulação de JSON na aplicação
 app.use(express.json())
-// Todos os arquivos estaticos que podem ser acessados diretamente, tais como, img, css, js
+// Define a pasta de arquivos estáticos (imagens, CSS, JavaScript, etc.)
 app.use(express.static(path.resolve(__dirname, 'public')))
+// Configuração das opções de sessão, incluindo a utilização do MongoDB para armazenar as sessões.
 const sessionOptions = session({
-  secret: 'texto q ninguem vai saber',
+  secret: 'texto q ninguem vai saber',  // Segredo usado para assinar a sessão
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7, // Cookie de 7 dias
-    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7, // Cookie válido por 7 dias
+    httpOnly: true,  // Protege contra ataques XSS
   },
-  store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),
+  store: MongoStore.create({ mongoUrl: process.env.CONNECTIONSTRING }),  // Armazena a sessão no MongoDB
 })
-
+// Aplicação das configurações de sessão à aplicação
 app.use(sessionOptions)
+// Configuração do middleware para exibição de mensagens temporárias.
 app.use(flash())
-// Arquivos que são renderizados na tela
+// Define a pasta onde os templates de views estão localizados
 app.set('views', path.resolve(__dirname, 'src', 'views'))
-// O motor que esta sendo utilizado para rendezir o html
+// Configura o motor de templates EJS
 app.set('view engine', 'ejs')
 
-app.use(csurf())
-// Middlewares
+app.use(csurf())  // Ativa a proteção contra CSRF
+// Registro dos middlewares globais e de segurança
 app.use(middlewareGlobal)
 app.use(middlewareSec)
 app.use(checkCsrfError)
 app.use(CsrfMiddleware)
-// Chamando as rotas
+// Usa as rotas definidas em outro arquivo
 app.use(routes)
-// Coloca pra escutar as coisas, no caso liga a aplicação
+// Inicia o servidor na porta 3000 após a conexão com o banco de dados estar pronta
 app.on('Pronto', () => {
   app.listen(3000, () => {
     console.log('Acessar: http://localhost:3000')

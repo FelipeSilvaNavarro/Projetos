@@ -13,6 +13,7 @@
                                 <% } else { %>
                                     <form action="/contato/register" method="post">
                                         <% }%>
+                                        <!-- TODO: VALIDAR ESTE FORM USANDO O FRONT, igual no de login -->
                                             <input type="hidden" name="_csrf" value=<%=csrfToken %>>
                                             <div class="form-group">
                                                 <label>Nome</label>

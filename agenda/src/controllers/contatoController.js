@@ -4,6 +4,12 @@ exports.index = (req, res) => {
     contato: {},
   });
 };
+/**
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 exports.register = async (req, res) => {
   try {
     const contato = new Contato(req.body);
