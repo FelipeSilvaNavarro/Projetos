@@ -1,17 +1,18 @@
 /**
- * Define a classe `Login` para gerenciar a validação de formulários de login e cadastro.
- * Inclui validação de e-mail e senha, manipulação de erros e mensagens flash.
+ * Define a classe `Contato` para gerenciar a validação de formulários de edição e criação de contatos.
+ * Inclui validação de Nome, sobrenome, email e telefone, manipulação de erros e mensagens flash.
  * Utiliza a biblioteca `validator` para validação de dados direto no front-end.
  */
 
 import validator from "validator"
 
-export default class Login {
+export default class Contato {
     constructor(formClass) {
         this.form = document.querySelector(formClass)
         this.errorMessages = {
+            nome: 'Nome é um campo obrigatorio',
             email: 'Email inválido',
-            password: 'Senha precisa ter entre 3 e 50 caracteres'
+            telefone: 'Telefone é um campo obrigatorio'
         }
     }
 
@@ -35,17 +36,22 @@ export default class Login {
         const el = e.target
         // Pega os dados dos campos
         const emailInput = el.querySelector('input[name="email"]')
-        const passwordInput = el.querySelector('input[name="password"]')
+        const nomeInput = el.querySelector('input[name="nome"]')
+        const telefoneInput = el.querySelector('input[name="telefone"]')
         // Flag de erro
         let error = false
         this.clearErrors()
-        // Valida e-mail e senha
+        // Valida nome, email e telefone
         if (!validator.isEmail(emailInput.value)) {
             this.showError(emailInput, this.errorMessages.email)
             error = true
         }
-        if (passwordInput.value.length < 3 || passwordInput.value.length > 50) {
-            this.showError(passwordInput, this.errorMessages.password)
+        if (!nomeInput.value) {
+            this.showError(nomeInput, this.errorMessages.nome)
+            error = true
+        }
+        if (!telefoneInput.value) {
+            this.showError(telefoneInput, this.errorMessages.telefone)
             error = true
         }
         if (!error) el.submit()

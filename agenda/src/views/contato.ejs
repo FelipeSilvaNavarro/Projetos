@@ -11,16 +11,14 @@
             
             <!-- Verifica se o contato já existe para determinar a URL do formulário -->
             <% if (contato._id) { %>
-                <form action="/contato/edit/<%= contato._id %>" method="post"> <!-- Formulário para edição de contato -->
+                <form class="form-edita-contato" action="/contato/edit/<%= contato._id %>" method="post"> <!-- Formulário para edição de contato -->
             <% } else { %>
-                <form action="/contato/register" method="post"> <!-- Formulário para criação de novo contato -->
+                <form class="form-novo-contato" action="/contato/register" method="post"> <!-- Formulário para criação de novo contato -->
             <% } %>
-                <!-- TODO: VALIDAR ESTE FORM USANDO O FRONT, igual no de login -->
                 <input type="hidden" name="_csrf" value=<%= csrfToken %>> <!-- Token CSRF para proteção contra ataques CSRF -->
-                
                 <!-- Campo para o nome do contato -->
                 <div class="form-group">
-                    <label>Nome</label>
+                    <label>Nome *</label>
                     <input value="<%= contato.nome %>" type="text" class="form-control" name="nome">
                 </div>
                 
@@ -32,13 +30,13 @@
                 
                 <!-- Campo para o email do contato -->
                 <div class="form-group">
-                    <label>Email</label>
+                    <label>Email *</label>
                     <input value="<%= contato.email %>" type="email" class="form-control" name="email">
                 </div>
                 
                 <!-- Campo para o telefone do contato -->
                 <div class="form-group">
-                    <label>Telefone</label>
+                    <label>Telefone *</label>
                     <input value="<%= contato.telefone %>" type="tel" class="form-control" name="telefone">
                 </div>
                 
