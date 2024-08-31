@@ -73,7 +73,6 @@ exports.login = async function (req, res) {
     req.flash('success', 'Logado')
     req.session.user = login.user // Salva as informações do usuário na sessão
 
-    // TODO: Redirecionar para a tela principal após 3 segundos
     req.session.save(() => {
       return res.redirect('/login/index') // Redireciona para a página de login após sucesso e salvar a sessão
     })

@@ -8,11 +8,39 @@
     <div class="row justify-content-center">
         <div class="col-lg-8 my-3">
             <!-- Título que exibe o e-mail do usuário -->
-            <!-- TODO: Colocar pra aparecer o nome, juntamente com um novo campo "Usuario" tipo nome de user -->
             <h1 class="text-center">Olá <%= user.email %></h1>
             <!-- Mensagem informando sobre a necessidade de sair para criar outra conta -->
-            <p class="text-center lead">Você precisa sair para criar outra conta</p>
+            <p class="text-center lead">Você precisa sair para criar outra conta.</p>
             <!-- Inclui mensagens flash para o usuário -->
+            <p class="text-center">Você será redirecionado para a página inicial em <span id="counter">3</span> segundos...</p>
+            <!-- Script para contagem regressiva e redirecionamento -->
+            <script>
+                // Define o tempo final (agora + 3 segundos)
+                const endTime = Date.now() + 3000;
+
+                function updateCounter() {
+                    const now = Date.now();
+                    const distance = endTime - now;
+
+                    // Calcula os segundos restantes
+                    const seconds = Math.ceil(distance / 1000);
+
+                    // Atualiza o contador no HTML
+                    document.getElementById('counter').textContent = seconds > 0 ? seconds : 0;
+
+                    // Verifica se o tempo acabou
+                    if (distance <= 0) {
+                        clearInterval(timer); // Para o intervalo
+                        window.location.href = '/'; // Redireciona para a página inicial
+                    }
+                }
+
+                // Atualiza o contador a cada segundo
+                const timer = setInterval(updateCounter, 1000);
+
+                // Inicializa o contador
+                updateCounter();
+            </script>
             <%- include('includes/messages') %>
         </div>
     </div>
