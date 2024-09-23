@@ -1,22 +1,24 @@
 import express from 'express'
 import homeRouter from './src/routes/homeRoutes'
+import userRouter from './src/routes/UserRoutes'
 import dotenv from 'dotenv'
 import './src/database'
 dotenv.config()
-class App {
+class app {
   constructor() {
     // Sempre que chamar o APP, chama esses 3 métodos
-    this.App = express()
+    this.app = express()
     this.middlewares()
     this.routes()
   }
   middlewares () {
-    this.App.use(express.urlencoded({ extended: true }))
-    this.App.use(express.json())
+    this.app.use(express.urlencoded({ extended: true }))
+    this.app.use(express.json())
   }
   routes () {
-    this.App.use('/', homeRouter) // / É a home e chamou o homeRouter
+    this.app.use('/', homeRouter) // '/' É a home e chamou o homeRouter
+    this.app.use('/users/', userRouter) //
   }
 }
 // Ja exportou instanciando pra nn precisar instaciar na hora do import
-export default new App().App
+export default new app().app
