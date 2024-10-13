@@ -4,7 +4,9 @@ class UserController {
   async store (req, res) {
     try {
       const novoUser = await User.create(req.body)
-      res.json(novoUser)
+      const { id, nome, email } = novoUser
+      // Fazendo destructor pra retornar somente o json do id, nome e email
+      res.json({ id, nome, email })
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message)
@@ -14,9 +16,9 @@ class UserController {
   // Index
   async index (req, res) {
     try {
-      const users = await User.findAll()
-      console.log('USER ID', req.userId);
-      console.log('USER EMAIL', req.userEmail);
+      const users = await User.findAll({ attributes: [ 'id', 'nome', 'email' ] }) // Estes campos que serão exibidos no index
+      console.log('USER ID', req.userId)
+      console.log('USER EMAIL', req.userEmail)
 
       res.json(users)
       // eslint-disable-next-line no-unused-vars
@@ -28,7 +30,8 @@ class UserController {
   async show (req, res) {
     try {
       const user = await User.findByPk(req.params.id)
-      res.json(user)
+      const { id, nome, email } = user
+      res.json({ id, nome, email })
       // eslint-disable-next-line no-unused-vars
     } catch (e) {
       return res.json(null)
@@ -37,20 +40,16 @@ class UserController {
   // Update
   async update (req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['ID não enviado']
-        })
-      }
-      const user = await User.findByPk(req.params.id)
+      const user = await User.findByPk(req.userId)
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Usuario não existe']
+          errors: [ 'Usuario não existe' ]
         })
       }
-      await user.update(req.body)
-      res.json(user)
+      const novosDados = await user.update(req.body)
+      const { id, nome, email } = novosDados
+      res.json({id,nome, email})
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message)
@@ -60,20 +59,15 @@ class UserController {
   // Delete
   async delete (req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['ID não enviado']
-        })
-      }
-      const user = await User.findByPk(req.params.id)
+      const user = await User.findByPk(req.userId)
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Usuario não existe']
+          errors: [ 'Usuario não existe' ]
         })
       }
       await user.destroy()
-      res.json(user)
+      res.json(null)
     } catch (e) {
       res.status(400).json({
         errors: e.errors.map((err) => err.message)
