@@ -4,6 +4,7 @@ import homeRouter from './src/routes/homeRoutes'
 import userRouter from './src/routes/UserRoutes'
 import tokenRoutes from './src/routes/tokenRoutes'
 import alunoRoutes from './src/routes/alunoRoutes'
+import fotoRoutes from './src/routes/fotoRoutes'
 import dotenv from 'dotenv'
 import './src/database'
 dotenv.config()
@@ -23,6 +24,7 @@ class app {
     this.app.use('/users/', userRouter) //
     this.app.use('/tokens/', tokenRoutes)
     this.app.use('/alunos/', alunoRoutes)
+    this.app.use('/fotos/', fotoRoutes)
   }
 }
 // Ja exportou instanciando pra nn precisar instaciar na hora do import
