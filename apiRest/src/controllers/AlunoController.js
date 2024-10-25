@@ -1,8 +1,16 @@
 import Aluno from '../models/Aluno'
-
+import Foto from '../models/Foto'
 class AlunoController {
   async index (req, res) {
-    const alunos = await Aluno.findAll()
+    const alunos = await Aluno.findAll({
+      // Para mostrar a foto associada
+      attributes: [ 'id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', ],
+      order: [ [ 'id', 'DESC' ], [ Foto, 'id', 'DESC' ] ],
+      include: {
+        model: Foto,
+        attributes: [ 'filename' ]
+      }
+    })
     res.json(alunos)
   }
   async store (req, res) {
@@ -23,15 +31,22 @@ class AlunoController {
           errors: [ 'Falta ID' ]
         })
       }
-      const aluno = await Aluno.findByPk(req.params.id)
-      const { nome, sobrenome, email, idade, peso, altura } = aluno
+      const aluno = await Aluno.findByPk(id, {
+        attributes: [ 'id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', ],
+        order: [ [ 'id', 'DESC' ], [ Foto, 'id', 'DESC' ] ],
+        include: {
+          model: Foto,
+          attributes: [ 'filename' ]
+        }
+      })
+      const { nome, sobrenome, email, idade, peso, altura, Fotos } = aluno
       if (!aluno) {
         return res.status(400).json({
           errors: [ 'Aluno não existe' ]
         })
       }
       // Passando essas verificações pode exibir o aluno pois tem-se a certeza de que o aluno existe
-      return res.json({ nome, sobrenome, email, idade, peso, altura })
+      return res.json({ nome, sobrenome, email, idade, peso, altura, Fotos })
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
