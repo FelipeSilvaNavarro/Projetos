@@ -1,4 +1,5 @@
 import express from 'express'
+import { resolve } from 'path'
 // Registro de rotas
 import homeRouter from './src/routes/homeRoutes'
 import userRouter from './src/routes/UserRoutes'
@@ -18,6 +19,7 @@ class app {
   middlewares () {
     this.app.use(express.urlencoded({ extended: true }))
     this.app.use(express.json())
+    this.app.use(express.static(resolve(__dirname, 'uploads')))
   }
   routes () {
     this.app.use('/', homeRouter) // '/' É a home e chamou o homeRouter
